@@ -1,0 +1,57 @@
+buildscript{
+		
+		ext{
+			lombokPluginVersion = '3.1.0'
+			springBootVersion = '2.1.7.RELEASE'			
+		}
+		repositories{
+			gradlePluginPortal()
+			mavenCentral()
+		}
+		dependencies{
+			classpath "io.franzbecker:gradle-lombok:${lombokPluginVersion}"
+			classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+		}
+}
+
+apply plugin: "java"
+apply plugin: "war"
+apply plugin: 'io.spring.dependency-management'
+apply plugin: "io.franzbecker.gradle-lombok"
+apply plugin: 'org.springframework.boot'
+
+
+
+
+group = 'com.basic'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+springBoot {
+	buildInfo()
+}
+
+bootWar {
+    baseName = 'crudbasic'
+    archiveName 'crudbasic.war'
+}
+
+war {
+    archiveName = 'myname.war'
+}
+
+
+repositories {	
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.flywaydb:flyway-core'
+	implementation 'mysql:mysql-connector-java'
+	compileOnly 'org.projectlombok:lombok:1.18.8'
+	annotationProcessor 'org.projectlombok:lombok:1.18.8'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}

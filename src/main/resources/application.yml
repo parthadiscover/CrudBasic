@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: jdbc:mysql://remotemysql.com:3306/yraeTC5sLU
+    password: 4vo8VlUpGK
+    username: yraeTC5sLU
+    driver-class-name: "com.mysql.cj.jdbc.Driver"
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql : true
+    hibernate:
+      ddl-auto: none
+      
+      
+---
+spring:
+   profiles: prod
+   
+   datasource:
+    url: jdbc:mysql://remotemysql.com:3306/yraeTC5sLU
+    password: 4vo8VlUpGK
+    username: yraeTC5sLU
+    driver-class-name: "com.mysql.cj.jdbc.Driver"
+   jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql : true
+    hibernate:
+      ddl-auto: none
